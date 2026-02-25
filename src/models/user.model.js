@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please Enter a Strong Password"],
   },
   bio: String,
-  profile_image: {
+  profileImage: {
     type: String,
     default:
       "https://ik.imagekit.io/mzzgm94tv/istockphoto-2200526153-612x612.jpg",
