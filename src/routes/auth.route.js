@@ -1,5 +1,8 @@
 const express = require("express");
 const userModel = require("../models/user.model");
+const jwt = require('jsonwebtoken')
+
+const crypto = require("crypto")
 
 const authRouter = express.Router();
 
@@ -19,4 +22,19 @@ authRouter.post("/register", async (req, res) => {
           : "Username Is already use:",
     });
   }
+
+  const hash = crypto.createHash('sha256').update(password).digest('hex')
+
+//   this code is used to create the user in out dataBase
+  const user = await userModel.create({
+    email,
+    username,
+    bio,
+    profileImage,
+    password:hash
+  })
+
+  const token = jwt.sign({
+    id:user._id
+  }, process.env.JWT_SECRET)
 });
