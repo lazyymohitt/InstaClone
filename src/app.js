@@ -5,9 +5,13 @@ dns.setDefaultResultOrder("ipv4first");
 const express = require ('express')
 const connectToDB = require('./config/database')
 
+const cookieParser = require("cookie-parser")
+
+
+
 const app = express()
 
 app.use(express.json())
-
+app.use(cookieParser())
 connectToDB()
 module.exports = app
