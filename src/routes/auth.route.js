@@ -16,8 +16,7 @@ authRouter.post("/register", async (req, res) => {
   });
   if (isUserAlreadyExist) {
     return res.status(409).json({
-      message:
-        "User already Exists" + iUserAlreadyExist.email === email
+      message:isUserAlreadyExist.email === email
           ? "Email Is already Used"
           : "Username Is already use:",
     });
