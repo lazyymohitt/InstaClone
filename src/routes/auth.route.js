@@ -58,4 +58,4 @@ authRouter.post("/register", async (req, res) => {
 });
 
 
-mdoule.exports = authRouter
+module.exports = authRouter
