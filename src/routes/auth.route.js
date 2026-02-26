@@ -42,6 +42,20 @@ authRouter.post("/register", async (req, res) => {
 
   res.cookie("token", token)
 
-  
+
+  res.status(201).json({
+    message:"User Is SuccesFully Created",
+
+    user:{
+        username:user.username,
+        profileImage:user.profileImage,
+        email:user.email,
+        bio :user.bio
+    }
+  })
+
 
 });
+
+
+mdoule.exports = authRouter
