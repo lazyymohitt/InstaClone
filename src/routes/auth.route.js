@@ -1,7 +1,6 @@
 const express = require("express");
 const userModel = require("../models/user.model");
 const jwt = require('jsonwebtoken')
-
 const crypto = require("crypto")
 
 const authRouter = express.Router();
@@ -56,5 +55,24 @@ authRouter.post("/register", async (req, res) => {
 
 });
 
+
+authRouter.post("/login", async(req,res)=>{
+
+
+  const {email , username , password} = req.body
+
+    const user =  userModel.findOne({
+      $or:[
+        {username:username},
+        {email:email}
+      ]
+    })
+
+    if(!user) {
+    return res.status(404).json({
+      message:"Username and passsword is InCorrrect"    })
+    }
+
+})
 
 module.exports = authRouter
