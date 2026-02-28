@@ -61,7 +61,7 @@ authRouter.post("/login", async(req,res)=>{
 
   const {email , username , password} = req.body
 
-    const user =  userModel.findOne({
+    const user =  await userModel.findOne({
       $or:[
         {username:username},
         {email:email}
