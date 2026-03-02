@@ -4,10 +4,8 @@ const bcrypt = require("bcryptjs")
 
 async function registerController(req, res) {
   const { username, email, password, profileImage, bio } = req.body;
-
   //
-
-  const isUserAlreadyExist = await userModel.findOne({
+const isUserAlreadyExist = await userModel.findOne({
     $or: [{ username }, { email }],
   });
   if (isUserAlreadyExist) {
