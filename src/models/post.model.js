@@ -3,7 +3,7 @@ const mongoose  = require("mongoose")
 const postSchema =  new mongoose.Schema({
     imageUrl:{
         type:String,
-        required:[true,"Image Url Is Required"]
+        required:[true,"image_Url Is Required"]
     },
     caption:{
         type:String,
