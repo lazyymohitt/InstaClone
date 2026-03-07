@@ -1,10 +1,10 @@
  const express =  require("express")
+ //  const createPostController = require("../controllers/post.controller")
+ const {createPostController} = require("../controllers/post.controller")
  const postRouter =  express.Router()
-//  const createPostController = require("../controllers/post.controller")
- const postController = require("../controllers/post.controller")
 
 
- postRouter.post("/", postController.createPostController)
+ postRouter.post("/", createPostController)
 
 
  module.exports = postRouter
