@@ -1,11 +1,13 @@
 const postModel = require("../models/post.model")
 
+const ImageKit , {toFile}  = require ("@imagekit/nodejs")
+
 
 
 
 async function createPostController(req,res){
-    console.log(req.body)
-    console.log("image show nahi hua ")
+    console.log(req.body, req.file)
+    
 }
 
 

@@ -1,7 +1,7 @@
 const mongoose  = require("mongoose")
 
 const postSchema =  new mongoose.Schema({
-    imageUrl:{
+   imageUrl :{
         type:String,
         required:[true,"image_Url Is Required"]
     },
