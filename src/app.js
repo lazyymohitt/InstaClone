@@ -1,26 +1,25 @@
-require("dotenv").config()
+require("dotenv").config();
+
 const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 dns.setDefaultResultOrder("ipv4first");
-const express = require ('express')
-const connectToDB = require('./config/database')
 
+const express = require("express");
+const connectToDB = require("./config/database");
 
-const authRouter = require("./routes/auth.routes")
-const postRouter = require("./routes/post.routes")
+const authRouter = require("./routes/auth.routes");
+const postRouter = require("./routes/post.routes");
 
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 
+const app = express();
 
+app.use(express.json());
+app.use(cookieParser()); // ✅ FIXED POSITION
 
+app.use("/api/auth", authRouter);
+app.use("/api/posts", postRouter);
 
-const app = express()
+connectToDB();
 
-app.use(express.json())
-app.use("/api/auth", authRouter)
-
-app.use("/api/posts", postRouter)
-app.use(cookieParser())
-
-connectToDB()
-module.exports = app
+module.exports = app;
