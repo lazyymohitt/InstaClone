@@ -17,8 +17,8 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser()); // ✅ FIXED POSITION
 
-app.use("/api/auth", authRouter);
 app.use("/api/posts", postRouter);
+app.use("/api/auth", authRouter);
 
 connectToDB();
 
