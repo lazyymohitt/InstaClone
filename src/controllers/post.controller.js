@@ -89,6 +89,48 @@ async function getPostController(req,res){
 
 }
 
+
+async  function getPostDetailsController(req,res){
+
+
+   const token =  res.cookies.token
+
+   let decoded ;
+
+   try {
+
+    decoded =  jwt.verify(token,process.env.JWT_SECRET) ;
+    
+   } catch (err) {
+
+    res.status(401).json({
+      message:"Invalid User"
+    })
+    
+   }
+
+   const userId = decoded.id
+
+   const postId = req.params.postId
+
+
+  //  fetching the post here 
+
+
+  const post = await postModel.findById(postId);
+
+
+
+  if(!post){
+     return res.staus(404).json({
+      message:"Post Not found"
+     })
+  }
+
+  
+
+  
+  }
 module.exports = {
   createPostController,
   getPostController
