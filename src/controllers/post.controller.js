@@ -63,9 +63,14 @@ async function createPostController(req, res) {
 async function getPostController(req,res){
 
 
+  const token =  req.cookies.token 
+   if (!token) {
+     return res.status(401).json({
+       message: "UnAuthorized User",
+     });
+   }
+  
   let decoded ;
-   const token =  req.cookies.token 
-
 
     try {
        decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -94,6 +99,11 @@ async  function getPostDetailsController(req,res){
 
 
    const token =  res.cookies.token
+   if(!token){
+    return res.status(401).json({
+      message:"UnAuthorized User"
+    })
+   }
 
    let decoded ;
 
