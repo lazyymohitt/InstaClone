@@ -98,7 +98,7 @@ async function getPostController(req,res){
 async  function getPostDetailsController(req,res){
 
 
-   const token =  res.cookies.token
+   const token =  req.cookies.token
    if(!token){
     return res.status(401).json({
       message:"UnAuthorized User"
@@ -113,8 +113,8 @@ async  function getPostDetailsController(req,res){
     
    } catch (err) {
 
-    res.status(401).json({
-      message:"Invalid User"
+     return res.status(401).json({
+      message:"Invalid Token"
     })
     
    }
@@ -130,18 +130,33 @@ async  function getPostDetailsController(req,res){
   const post = await postModel.findById(postId);
 
 
-
   if(!post){
      return res.staus(404).json({
       message:"Post Not found"
      })
   }
+    //  Here I am Using .toString Method because in POstUSer I got ObjectId and IN UserID we get Id
 
+  const isValidUser =  post.user.toString() === userId
+
+
+  if(!isValidUser) {
+    return res.status(403).json({
+      message:"Forbidden Content"
+    })
+  }
+
+
+  return res.status(200).json({
+    message:"Post Fetched Succesfully",
+    post
+  })
   
 
   
   }
 module.exports = {
   createPostController,
-  getPostController
+  getPostController,
+  getPostDetailsController,
 };

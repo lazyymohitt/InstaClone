@@ -1,7 +1,7 @@
  const express =  require("express")
  //  const createPostController = require("../controllers/post.controller")
  const {createPostController, getPostController} = require("../controllers/post.controller")
-
+ const postController =  require("../controllers/post.controller")
 
 const multer  = require ("multer")
 
