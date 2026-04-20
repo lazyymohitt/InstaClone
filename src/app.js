@@ -7,8 +7,6 @@ dns.setDefaultResultOrder("ipv4first");
 const express = require("express");
 const connectToDB = require("./config/database");
 
-const authRouter = require("./routes/auth.routes");
-const postRouter = require("./routes/post.routes");
 
 const cookieParser = require("cookie-parser");
 
@@ -16,6 +14,14 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser()); // ✅ FIXED POSITION
+
+// requiring the Routes
+const authRouter = require("./routes/auth.routes");
+const postRouter = require("./routes/post.routes");
+
+
+
+// using the routes Here 
 
 app.use("/api/posts", postRouter);
 app.use("/api/auth", authRouter);
