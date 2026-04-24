@@ -12,6 +12,7 @@ async function followUserController(req, res) {
   if (isAlreadyFollowing) {
     return res.status(200).json({
       message: "You're already following this User",
+      follow: isAlreadyFollowing,
     });
   }
   
@@ -25,6 +26,7 @@ async function followUserController(req, res) {
   if (followeeUsername == followerUsername) {
     return res.status(400).json({
       message: "You Cant follow YourSelf ",
+      
     });
   }
 
