@@ -1,9 +1,22 @@
 const followModel = require("../models/follow.model");
+const userModel = require("../models/user.model");
+const usermodel = require("../models/user.model")
 
 async function followUserController(req, res) {
   // This Is The LoggedIn USER
   const followerUsername = req.user.username;
   const followeeUsername = req.params.username;
+
+  const isUserExist =  await userModel.findOne({
+
+    username:followeeUsername
+  })
+
+  if(!isUserExist){
+    return res.status(404).json({
+      messsage:"No User Found With this Username"
+    })
+  }
 
   const isAlreadyFollowing =  await followModel.findOne({
     followee:followeeUsername,
@@ -15,6 +28,8 @@ async function followUserController(req, res) {
       follow: isAlreadyFollowing,
     });
   }
+
+
   
   const followRecord = await followModel.create({
     follower: followerUsername,
