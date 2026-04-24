@@ -5,10 +5,21 @@ async function followUserController(req, res) {
   const followerUsername = req.user.username;
   const followeeUsername = req.params.username;
 
+  const isAlreadyFollowing =  await followModel.findOne({
+    followee:followeeUsername,
+    follower:followerUsername
+  })
+  if (isAlreadyFollowing) {
+    return res.status(200).json({
+      message: "You're already following this User",
+    });
+  }
+  
   const followRecord = await followModel.create({
     follower: followerUsername,
     followee: followeeUsername,
   });
+
   // Now Fixing , If the User want to follow Himself
 
   if (followeeUsername == followerUsername) {
@@ -16,6 +27,10 @@ async function followUserController(req, res) {
       message: "You Cant follow YourSelf ",
     });
   }
+
+  
+
+
 
   res.status(201).json({
     message: `You are now following ${followeeUsername}`,
