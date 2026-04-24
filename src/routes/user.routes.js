@@ -16,7 +16,7 @@ const userRouter  = express.Router()
  * 
  */
 
-userRouter.post("/follow/:userid" , identifyUser, userController.followUserController)
+userRouter.post("/follow/:username" , identifyUser, userController.followUserController)
 
 
 
