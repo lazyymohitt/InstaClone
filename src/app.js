@@ -18,6 +18,7 @@ app.use(cookieParser()); // ✅ FIXED POSITION
 // requiring the Routes
 const authRouter = require("./routes/auth.routes");
 const postRouter = require("./routes/post.routes");
+const userRouter =  require("./routes/user.routes")
 
 
 
@@ -25,6 +26,7 @@ const postRouter = require("./routes/post.routes");
 
 app.use("/api/posts", postRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter)
 
 connectToDB();
 
