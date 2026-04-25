@@ -1,17 +1,14 @@
-const mongoose  = require("mongoose")
-
-
+const mongoose = require("mongoose");
 
 const followSchema = new mongoose.Schema(
   {
-   follower: {
-  type: String,
-  required: true,
-},
-followee: {
-  type: String,
-  required: true,
-
+    follower: {
+      type: String,
+      required: true,
+    },
+    followee: {
+      type: String,
+      required: true,
     },
   },
   {
@@ -19,9 +16,6 @@ followee: {
   },
 );
 
+const followModel = mongoose.model("follows", followSchema);
 
-const followModel  = mongoose.model('follows', followSchema)
-
-
-
-module.exports = followModel
+module.exports = followModel;
