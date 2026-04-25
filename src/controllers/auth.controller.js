@@ -1,11 +1,11 @@
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
 
 async function registerController(req, res) {
   const { username, email, password, profileImage, bio } = req.body;
   //
-const isUserAlreadyExist = await userModel.findOne({
+  const isUserAlreadyExist = await userModel.findOne({
     $or: [{ username }, { email }],
   });
   if (isUserAlreadyExist) {
@@ -17,7 +17,7 @@ const isUserAlreadyExist = await userModel.findOne({
     });
   }
 
-  const hash = await bcrypt.hash(password,10)
+  const hash = await bcrypt.hash(password, 10);
 
   //   this code is used to create the user in out dataBase
   const user = await userModel.create({
@@ -31,7 +31,7 @@ const isUserAlreadyExist = await userModel.findOne({
   const token = jwt.sign(
     {
       id: user._id,
-      username:user.username
+      username: user.username,
     },
     process.env.JWT_SECRET,
     { expiresIn: "1d" },
@@ -51,7 +51,7 @@ const isUserAlreadyExist = await userModel.findOne({
   });
 }
 
-async function loginController (req, res)  {
+async function loginController(req, res) {
   const { email, username, password } = req.body;
 
   const user = await userModel.findOne({
@@ -64,9 +64,7 @@ async function loginController (req, res)  {
     });
   }
 
-  
-
-  const isPasswordValid = await bcrypt.compare(password, user.password)
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     return res.status(401).json({
@@ -85,7 +83,6 @@ async function loginController (req, res)  {
 
   res.cookie("token", token);
 
-
   res.status(200).json({
     message: "user loggedIn Succesfully",
     user: {
@@ -95,9 +92,9 @@ async function loginController (req, res)  {
       profileImage: user.profileImage,
     },
   });
-};
+}
 
 module.exports = {
-    registerController,
-    loginController
-}
+  registerController,
+  loginController,
+};

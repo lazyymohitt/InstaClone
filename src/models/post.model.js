@@ -1,22 +1,21 @@
-const mongoose  = require("mongoose")
+const mongoose = require("mongoose");
 
-const postSchema =  new mongoose.Schema({
-   imageUrl :{
-        type:String,
-        required:[true,"image_Url Is Required"]
-    },
-    caption:{
-        type:String,
-        default:""
-    },
-    user:{
-        ref:"user",
-        type:mongoose.Schema.Types.ObjectId,
-        required:[true, "userId Is required"]
-    }
-})
+const postSchema = new mongoose.Schema({
+  imageUrl: {
+    type: String,
+    required: [true, "image_Url Is Required"],
+  },
+  caption: {
+    type: String,
+    default: "",
+  },
+  user: {
+    ref: "user",
+    type: mongoose.Schema.Types.ObjectId,
+    required: [true, "userId Is required"],
+  },
+});
 
-const postModel = mongoose.model("posts", postSchema)
+const postModel = mongoose.model("posts", postSchema);
 
-
-module.exports = postModel
+module.exports = postModel;
