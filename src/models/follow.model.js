@@ -16,6 +16,10 @@ const followSchema = new mongoose.Schema(
   },
 );
 
+
+// this ensures that the follower is only allowed to follow thr user Once
+ followSchema.index({followee:1 , follower :1},{unique :true})
+
 const followModel = mongoose.model("follows", followSchema);
 
 module.exports = followModel;

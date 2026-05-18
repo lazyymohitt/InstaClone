@@ -19,4 +19,14 @@ userRouter.post(
   userController.followUserController,
 );
 
+
+/**
+ * @route POST  /API/users/unfollow/:userId
+ * @description unfollow  a User
+ * @accessn private
+ *
+ */
+
+userRouter.post("/unfollow/:username" , identifyUser ,userController.unfollowUserController)
+
 module.exports = userRouter;

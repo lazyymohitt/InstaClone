@@ -5,6 +5,8 @@ const usermodel = require("../models/user.model");
 async function followUserController(req, res) {
   // This Is The LoggedIn USER
   const followerUsername = req.user.username;
+
+  // this is this User which we are going to Follow 
   const followeeUsername = req.params.username;
 
   const isUserExist = await userModel.findOne({
@@ -48,6 +50,32 @@ async function followUserController(req, res) {
   });
 }
 
+async function unfollowUserController (req, res){
+
+  const followerUsername = req.user.username;
+  const followeeUsername = req.params.username;
+
+
+  const isUserFollowing =  await followModel.findOne({
+    follower: followerUsername,
+    followee: followeeUsername
+  })
+  
+
+  if(!isUserFollowing){
+    return res.status(200).json({
+      message:`You're not following ${followerUsername}`
+    })
+  }
+
+
+  await followModel.findByIdAndDelete(isUserFollowing._id)
+   res.status(200).json({
+    message:`You Have UnFollowed ${followeeUsername}`
+   })
+}
+
 module.exports = {
   followUserController,
+  unfollowUserController
 };
