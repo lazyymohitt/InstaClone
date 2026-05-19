@@ -31,4 +31,13 @@ const upload  =  multer({storage:multer.memoryStorage()})
  postRouter.get("/details/:postId",identifyUser, postController.getPostDetailsController)
 
 
+ /**
+  * @routes POST /api/posts/like/:postId
+  * @description like a post to the provided Post Id in the request Params 
+  */ 
+
+
+ postRouter.post("/like/:postId", identifyUser ,postController.likePostController )
+
+
  module.exports = postRouter
