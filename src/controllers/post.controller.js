@@ -101,9 +101,6 @@ async function likePostController (req,res) {
       message:"Post liked Succesfully",
       like
      })
-
-
-
 }
 
 
@@ -112,5 +109,5 @@ async function likePostController (req,res) {
 module.exports = {
   createPostController,
   getPostController,
-  getPostDetailsController,
+  getPostDetailsController,likePostController
 };
