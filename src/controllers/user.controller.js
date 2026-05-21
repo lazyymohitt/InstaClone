@@ -64,7 +64,7 @@ async function unfollowUserController (req, res){
 
   if(!isUserFollowing){
     return res.status(200).json({
-      message:`You're not following ${followerUsername}`
+      message:`You're not following ${followeeUsername}`
     })
   }
 

@@ -16,6 +16,9 @@ async function registerController(req, res) {
           : "Username Is already use:",
     });
   }
+    if (!username || username.trim() === '') {
+    return res.status(400).json({ error: 'Username is required to register' });
+  }
 
   const hash = await bcrypt.hash(password, 10);
 
