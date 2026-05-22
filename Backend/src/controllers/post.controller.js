@@ -80,11 +80,11 @@ async function getPostDetailsController(req, res) {
 
 async function likePostController (req,res) {
 
-     const username =  req.user.username
+     const username = req.user.username;
 
-     const postId = req.params.postId
+     const postId = req.params.postId;
 
-     const post = await postModel.findById(postId)
+     const post = await postModel.findById(postId);
 
      if(!post){
        return res.status(404).json({
@@ -93,8 +93,8 @@ async function likePostController (req,res) {
      }
 
      const like  = await likeModel.create({
-      postId:postId,
-      user:username
+      post: postId,
+      user: username
      })
 
      res.status(200).json({

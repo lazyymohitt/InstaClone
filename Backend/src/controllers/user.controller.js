@@ -9,6 +9,13 @@ async function followUserController(req, res) {
   // this is this User which we are going to Follow 
   const followeeUsername = req.params.username;
 
+  // Prevent user from following themselves
+  if (followeeUsername === followerUsername) {
+    return res.status(400).json({
+      message: "You Cant follow YourSelf ",
+    });
+  }
+
   const isUserExist = await userModel.findOne({
     username: followeeUsername,
   });
@@ -36,14 +43,6 @@ async function followUserController(req, res) {
     followee: followeeUsername,
   });
 
-  // Now Fixing , If the User want to follow Himself
-
-  if (followeeUsername == followerUsername) {
-    return res.status(400).json({
-      message: "You Cant follow YourSelf ",
-    });
-  }
-
   res.status(201).json({
     message: `You are now following ${followeeUsername}`,
     follow: followRecord,
@@ -55,6 +54,11 @@ async function unfollowUserController (req, res){
   const followerUsername = req.user.username;
   const followeeUsername = req.params.username;
 
+  if (followeeUsername === followerUsername) {
+    return res.status(400).json({
+      message: "You Cant unfollow YourSelf ",
+    });
+  }
 
   const isUserFollowing =  await followModel.findOne({
     follower: followerUsername,
