@@ -1,0 +1,68 @@
+main{
+    min-height:100vh;
+    width:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    h1{
+        font-size:3.1rem;
+        font-style:normal;
+        font-weight:400;
+    
+    }
+    p{
+        font-size:1rem;
+        padding-top:-0.5rem;
+        word-spacing:0.2rem;
+        color:rgb(174, 174, 174);
+        font-weight:300;
+        font-family:"segoe ui",sans-serif;
+    }
+}
+
+
+
+.form-container{
+    height: fit-content;
+    min-width:400px;
+    display:flex;
+    flex-direction:column;
+
+    gap:1.5rem;
+
+    form{
+        display:flex;
+        flex-direction:column;
+        gap:1rem;
+
+        input,button{
+            border:none;
+            outline:none;
+            padding-inline:1.5rem;
+            padding-block:1.5rem;
+            border-radius:1rem;
+            font-family: inherit;
+        }
+
+        button{
+            cursor:pointer;
+            color:white;
+            background-color:rgb(238, 59, 59);
+           
+            
+            
+        }
+      
+    }
+
+      .toggleAuthForm{
+            color:rgb(238, 59, 59);
+            font-weight:700;
+                cursor:pointer;
+                text-decoration:none;
+            
+        }
+
+}

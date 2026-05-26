@@ -58,7 +58,7 @@ async function getPostDetailsController(req, res) {
   const post = await postModel.findById(postId);
 
   if (!post) {
-    return res.staus(404).json({
+    return res.status(404).json({
       message: "Post Not found",
     });
   }
