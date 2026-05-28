@@ -7,7 +7,7 @@ import Login from "./Features/Auth/Pages/Login.jsx";
 import "./style.scss";
 import Register from "./Features/Auth/Pages/Register.jsx";
 
-import { authProvider } from "./Context/authContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <authProvider>
+    <AuthProvider>
       <RouterProvider router={router} />
-    </authProvider>
+    </AuthProvider>
   </StrictMode>,
 );

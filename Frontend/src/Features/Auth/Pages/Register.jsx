@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import Login from './Login'
 import axios from "axios"
+import { useAuth } from '../hooks/useAuth'
 
 const Register = () => {
 
@@ -9,10 +10,14 @@ const Register = () => {
   const [email , setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const {handleRegister} = useAuth()
 
   async function handleSubmit(e){
     e.preventDefault()
-
+       handleRegister( username, email, password)
+       .then(res=>{
+        console.log(res)
+       })
     }
 
   return (

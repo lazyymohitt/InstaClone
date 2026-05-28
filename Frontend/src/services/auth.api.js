@@ -1,52 +1,52 @@
-import axios from "axios"
-import { useAsyncError } from "react-router-dom"
-const api =  axios.create({
-    baseUrl:"http://localhost:3000/api/auth",
-    withCredentials:true
-})
+import axios from "axios";
 
-export async function Register(username,emmail,password){
+const api = axios.create({
+    baseURL: "http://localhost:3000/api/auth",
+    withCredentials: true
+});
 
+export async function Register(username,email,password) {
 
-    try{
-        const response = await api.post("/register",{
+    try {
+
+        const response = await api.post("/register", {
             username,
             email,
             password
-        })
+        });
 
-        return response.data
-    }
-    catch(err){
-        throw err
+        return response.data;
+
+    } catch (err) {
+        throw err;
     }
 }
 
+export async function login(username, password) {
 
+    try {
 
-export async function login(username,password){
-
-
-    try{
-        const respons = api.post("/login",{
+        const response = await api.post("/login", {
             username,
             password
-        }
-        )
-    }
-    catch (err){
-         throw err
+        });
+
+        return response.data;
+
+    } catch (err) {
+        throw err;
     }
 }
 
+export async function getMe() {
 
+    try {
 
-export async function getMe(){
+        const response = await api.get("/get-me");
 
-try {
-    const response =  api.get("/get-me")
-    return response.data
-} catch (err) {
-   console.log(data)  
-}
+        return response.data;
+
+    } catch (err) {
+        console.log(err);
+    }
 }
