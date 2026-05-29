@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Login from './Login'
 import axios from "axios"
 import { useAuth } from '../hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
 
@@ -10,14 +11,19 @@ const Register = () => {
   const [email , setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  const {handleRegister} = useAuth()
+  const navigate = useNavigate()
+
+  const {handleRegister, loading} = useAuth()
 
   async function handleSubmit(e){
     e.preventDefault()
-       handleRegister( username, email, password)
-       .then(res=>{
-        console.log(res)
-       })
+      await handleRegister( username, email, password)
+      navigate("/")
+      
+    }
+
+    if(loading){
+      return(<main><h1>Loading..</h1></main>)
     }
 
   return (
