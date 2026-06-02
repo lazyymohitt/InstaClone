@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import "../style/feed.scss"
-import Post from '../components/post'
+import Post from '../components/Post'
 
 import { usePost } from '../hook/usePost'
 

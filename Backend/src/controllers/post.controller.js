@@ -3,7 +3,6 @@ const ImageKit = require("@imagekit/nodejs");
 const { toFile } = require("@imagekit/nodejs");
 const { Folders } = require("@imagekit/nodejs/resources.js");
 const jwt = require("jsonwebtoken");
-
 const likeModel = require("../models/like.model")
 
 const imagekit = new ImageKit({
@@ -11,28 +10,32 @@ const imagekit = new ImageKit({
 });
 
 async function createPostController(req, res) {
-  // here we have set the ImageKitCode
+  try {
+    // here we have set the ImageKitCode
 
-  const file = await imagekit.files.upload({
-    file: await toFile(Buffer.from(req.file.buffer), "file"),
-    fileName: "Test",
-    folder: "User_Posts",
-  });
+    const file = await imagekit.files.upload({
+      file: await toFile(Buffer.from(req.file.buffer), "file"),
+      fileName: "Test",
+      folder: "User_Posts",
+    });
 
-  const post = await postModel.create({
-    imageUrl: file.url,
-    caption: req.body.caption,
-    user: req.user.id,
-  });
+    const post = await postModel.create({
+      imageUrl: file.url,
+      caption: req.body.caption,
+      user: req.user.id,
+    });
 
-  res.status(201).json({
-    message: "Post Created SuccessFully",
-    post,
-  });
-
-  res.status(500).json({
-    message: "Something Went wrong",
-  });
+    return res.status(201).json({
+      message: "Post Created SuccessFully",
+      post,
+    });
+  } catch (error) {
+    console.error("Error in createPostController:", error);
+    return res.status(500).json({
+      message: "Something went wrong while creating post",
+      error: error.message,
+    });
+  }
 }
 
 async function getPostController(req, res) {
@@ -104,15 +107,31 @@ async function likePostController (req,res) {
 }
 
 async function getFeedController(req,res) {
-  const posts = await postModel.find().populate("user")
-  res.status(200).json({
+  try {
+    const user = req.user 
+    const posts = await Promise.all((await postModel.find().populate("user").lean())
+    .map(async(post)=>{
 
-    
-    
+      const isLiked = await likeModel.findOne({
+        user:user.username,
+        post:post._id
+      })
+      post.isLiked = Boolean(isLiked)
 
-    message:"Posts fetched succesfully",
-    posts
-  })
+      return post
+    }))
+
+    return res.status(200).json({
+      message: "Feed Fetched Successfully",
+      posts,
+    });
+  } catch (error) {
+    console.error("Error in getFeedController:", error);
+    return res.status(500).json({
+      message: "Something went wrong while fetching feed",
+      error: error.message,
+    });
+  }
 }
 
  

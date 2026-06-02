@@ -7,26 +7,26 @@ const Posts = ({ user, post }) => {
     <div className="post">
       <div className="top-side">
         <div className="pfp">
-          <img src={user.profileImage} alt="nopic" />
+          <img src={user?.profileImage || "https://ik.imagekit.io/mzzgm94tv/User_Posts/9c3a99f116bf2418f73da560ab81e9aa.jpg"} alt="nopic" />
         </div>
-        <p>{user.username}</p>
+        <p>{user?.username || "anonymous"}</p>
       </div>
       <div className="image">
-        <img src={post.imageUrl} alt="" />
+        <img src={post?.imageUrl || ""} alt="" />
       </div>
       <div className="bottom">
         <div className="icons">
           <div className="left-icons">
-            <i class="ri-heart-3-line"></i>
-            <i class="ri-chat-3-line"></i>
-            <i class="ri-send-ins-line"></i>
+            <i className={`ri-heart-3-line ${post?.isLiked ? "like" : ""}`}></i>
+            <i className="ri-chat-3-line"></i>
+            <i className="ri-send-ins-line"></i>
           </div>
           <div className="right-icons">
-            <i class="ri-bookmark-line"></i>
+            <i className="ri-bookmark-line"></i>
           </div>
         </div>
         <div className="captions">
-          <p>{post.caption}</p>
+          <p>{post?.caption || ""}</p>
         </div>
       </div>
     </div>
