@@ -2,7 +2,7 @@ import { getFeed } from "../services/post.api";
 
 
 import { useContext } from "react";
-import {PostContext} from "../post.Context"
+import {PostContext} from "../postContext"
 
 
 export const usePost  = ()=>{

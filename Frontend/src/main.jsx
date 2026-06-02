@@ -8,7 +8,7 @@ import "./style.scss";
 import Register from "./Features/Auth/Pages/Register.jsx";
 
 import { AuthProvider } from "./context/AuthContext.jsx";
-import { PostContext, PostContextProvider } from "./Features/posts/post.context.jsx";
+import { PostContext, PostContextProvider } from "./Features/posts/postContext.jsx";
 
 const router = createBrowserRouter([
   {

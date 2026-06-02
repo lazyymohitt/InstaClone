@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   profileImage: {
     type: String,
     default:
-      "https://ik.imagekit.io/mzzgm94tv/istockphoto-2200526153-612x612.jpg?updatedAt=1771579569808",
+      "https://ik.imagekit.io/mzzgm94tv/User_Posts/9c3a99f116bf2418f73da560ab81e9aa.jpg",
   },
 });
 

@@ -12,8 +12,8 @@ export const PostContextProvider = ({children}) =>{
 
 
     return (
-        <PostContext.provider value={{loading,setLoading,setFeed ,feed , post, setPost}}>
+        <PostContext.Provider value={{loading,setLoading,setFeed ,feed , post, setPost}}>
             {children}
-        </PostContext.provider>
+        </PostContext.Provider>
     )
 }
