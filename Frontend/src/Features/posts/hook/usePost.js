@@ -17,6 +17,7 @@ export const usePost  = ()=>{
         setFeed(data.posts)
         setLoading(false)
     }
-    return(loading, feed , post , handleGetFeed)
+
+    return{loading, feed , post , handleGetFeed}
 
 }
