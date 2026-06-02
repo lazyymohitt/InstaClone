@@ -1,5 +1,6 @@
 import React from "react";
 import "../style/feed.scss";
+import 'remixicon/fonts/remixicon.css'
 
 const Posts = () => {
   return (
@@ -18,8 +19,14 @@ const Posts = () => {
       </div>
       <div className="bottom">
         <div className="icons">
-          <div className="left-icons"></div>
-          <div className="right-icons"></div>
+          <div className="left-icons">
+            <i class="ri-heart-3-line"></i>
+            <i class="ri-chat-3-line"></i>
+            <i class="ri-send-ins-line"></i>
+          </div>
+          <div className="right-icons">
+            <i class="ri-bookmark-line"></i>
+          </div>
         </div>
         <div className="captions">
             <p>Lorem ipsum dolor sit amet.</p>
