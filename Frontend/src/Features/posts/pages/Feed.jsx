@@ -1,6 +1,6 @@
 import React from 'react'
 import "../style/feed.scss"
-import Posts from '../components/posts'
+import Post from '../components/post'
 
 const Feed = () => {
   return (
@@ -9,7 +9,7 @@ const Feed = () => {
             <h1>Your Posts</h1>
         </div>
         <div className="cards">
-          <Posts/>
+          {/* <Post/> */}
         </div>
     </div>
   )

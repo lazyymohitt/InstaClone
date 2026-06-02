@@ -1,21 +1,18 @@
 import React from "react";
 import "../style/feed.scss";
-import 'remixicon/fonts/remixicon.css'
+import "remixicon/fonts/remixicon.css";
 
-const Posts = () => {
+const Posts = ({ user, post }) => {
   return (
     <div className="post">
       <div className="top-side">
         <div className="pfp">
-          <img
-            src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="nopic"
-          />
+          <img src={user.profileImage} alt="nopic" />
         </div>
-        <p>username</p>
+        <p>{user.username}</p>
       </div>
       <div className="image">
-        <img src="https://images.unsplash.com/photo-1628173422874-0d18ff5bfb83?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+        <img src={post.imageUrl} alt="" />
       </div>
       <div className="bottom">
         <div className="icons">
@@ -29,7 +26,7 @@ const Posts = () => {
           </div>
         </div>
         <div className="captions">
-            <p>Lorem ipsum dolor sit amet.</p>
+          <p>{post.caption}</p>
         </div>
       </div>
     </div>
