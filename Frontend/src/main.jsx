@@ -8,6 +8,7 @@ import "./style.scss";
 import Register from "./Features/Auth/Pages/Register.jsx";
 
 import { AuthProvider } from "./context/AuthContext.jsx";
+import { PostContext, PostContextProvider } from "./Features/posts/post.context.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
+    <PostContextProvider>
       <RouterProvider router={router} />
+    </PostContextProvider>
     </AuthProvider>
   </StrictMode>,
 );
