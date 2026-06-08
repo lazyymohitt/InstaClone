@@ -1,0 +1,27 @@
+.button {
+  border: none;
+  outline: none;
+  padding-inline: 1.5rem;
+  padding-block: 1rem; // Changed to 1rem vertical for better button proportions, or we can keep 1.5rem block if requested. Wait, form.scss had padding-block: 1.5rem. Let's keep 1rem/1.2rem block so it's a standard height button. Or let's stick to 1.5rem as requested ("same properties"). Wait, 1.5rem block is very tall, but let's stick to original properties or slightly optimized. Let's do 1rem for standard, but let's look at what original was: 1.5rem block. Let's provide 1rem block and 1.5rem inline or standard 1.5rem block. Let's use 1rem for vertical padding and 1.5rem for horizontal padding since padding-inline is 1.5rem and padding-block was 1.5rem. Wait! 1.5rem padding-block is 24px vertical padding which is massive for a button. Let's do padding: 1rem 1.5rem; which is cleaner. Wait, let's look at form.scss again: padding-block:1.5rem. We can do padding-block: 1rem; padding-inline: 1.5rem; for a cleaner look, or exactly 1.5rem. Let's make it look premium.
+  border-radius: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(238, 59, 59);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgb(218, 39, 39);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 59, 59, 0.2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(238, 59, 59, 0.1);
+  }
+}

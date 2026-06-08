@@ -9,6 +9,7 @@ import Register from "./Features/Auth/Pages/Register.jsx";
 
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { PostContext, PostContextProvider } from "./Features/posts/postContext.jsx";
+import CreatePost from "./Features/posts/pages/CreatePost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
   },
+  {
+    path :"/create-post",
+    element :<CreatePost/>
+  }
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
