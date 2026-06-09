@@ -106,7 +106,7 @@ async function likePostController (req,res) {
      })
 }
 
-async function unlikePostController(params) {
+async function unlikePostController(req,res) {
 
   const postId = req.params.postId
   const username= req.user.username 

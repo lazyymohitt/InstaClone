@@ -1,8 +1,10 @@
 import React from "react";
 import "../style/feed.scss";
 import "remixicon/fonts/remixicon.css";
+import { usePost } from "../hook/usePost";
 
-const Posts = ({ user, post }) => {
+
+const Posts = ({ user, post  , loading , handleLike , handleUnLike}) => {
   return (
     <div className="post">
       <div className="top-side">
@@ -17,7 +19,9 @@ const Posts = ({ user, post }) => {
       <div className="bottom">
         <div className="icons">
           <div className="left-icons">
-            <i className={`ri-heart-3-line ${post?.isLiked ? "like" : ""}`}></i>
+            <i 
+            onClick={()=>{post.isLiked ? handleUnLike(post._id): handleLike(post._id)}}
+             className={`ri-heart-3-line ${post?.isLiked ? "like" : ""}`}></i>
             <i className="ri-chat-3-line"></i>
             <i className="ri-send-ins-line"></i>
           </div>
