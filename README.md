@@ -1,4 +1,4 @@
-# 📸 InstaClone
+# 📸LUNARA (InstaClone)
 
 A modern Instagram-inspired social media platform built using the MERN Stack. Users can create accounts, upload photos, like posts, follow/unfollow other users, and explore a personalized social feed.
 
