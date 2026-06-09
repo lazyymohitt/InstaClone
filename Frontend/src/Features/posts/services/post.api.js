@@ -27,3 +27,17 @@ export async function createPost(imageFile,caption){
     return response.data
 
 }
+
+export async function likePost(postId) {
+    const response =  await api.post("/api/posts/like" + postId)
+    
+    return response.data
+    
+}
+
+export async function unlikePost(postId) {
+    const response =  await api.post("/api/posts/unlike" + postId)
+    return response.data
+
+
+}

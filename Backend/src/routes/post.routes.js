@@ -39,6 +39,12 @@ const upload  =  multer({storage:multer.memoryStorage()})
 
  postRouter.post("/like/:postId", identifyUser ,postController.likePostController )
 
+ /**
+  * @route POST /api/posts/unlike/:postID
+  * @description to unlike the post 
+  */
+ postRouter.post("/unlike/:postId", identifyUser ,postController.unlikePostController )
+
 /**
  * @route Get /api/posts/feed
  * @description get alll the posts of the login USer
