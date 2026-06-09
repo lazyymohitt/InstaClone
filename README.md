@@ -107,15 +107,16 @@ bash cd client npm run dev
 ## 📸 Screenshots
 
 ### Login Page
-<img width="1470" height="956" alt="Screenshot 2026-06-09 at 2 43 52 PM" src="https://github.com/user-attachments/assets/0b04e3a2-54cb-45c6-bc81-ba4c36e69af8" />
+<img width="1470" height="956" alt="Screenshot 2026-06-09 at 2 56 10 PM" src="https://github.com/user-attachments/assets/62871d11-4f11-4e17-a55b-21360daca736" />
+
 
 
 ### Feed Page
-<img width="1470" height="956" alt="Screenshot 2026-06-09 at 2 49 59 PM" src="https://github.com/user-attachments/assets/f2a1111f-1f40-4d6d-adc8-2c60ea0f7d66" />
+<img width="1470" height="956" alt="Screenshot 2026-06-09 at 2 56 02 PM" src="https://github.com/user-attachments/assets/5dff9059-4fb3-49fd-8df4-0502c7dc4e2f" />
 
 
 ###Register Page
-<img width="1470" height="956" alt="Screenshot 2026-06-09 at 2 44 02 PM" src="https://github.com/user-attachments/assets/78f28837-76e1-4e2d-84a5-c1738f7339ae" />
+<img width="1470" height="956" alt="Screenshot 2026-06-09 at 2 56 15 PM" src="https://github.com/user-attachments/assets/041a4f71-186c-4505-a341-e73df23fba21" />
 
 ---
 
