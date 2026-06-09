@@ -16,7 +16,7 @@ export async function getFeed() {
 
 export async function createPost(imageFile,caption){
 
-    const formData =  new formData()
+    const formData =  new FormData()
 
     formData.append("img", imageFile)
     formData.append("caption", caption)
